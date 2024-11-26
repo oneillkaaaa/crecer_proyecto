@@ -71,23 +71,25 @@ include 'Header.php';
                 <div class="row">
                     <?php foreach ($pacientes as $paciente): ?>
                         <div class="col-xl-6 col-md-6 mb-6 mt-4">
-                            <div class="card border-left-rose shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-purple text-uppercase mb-1">
-                                                <b><?php echo $paciente['Nombre_paciente']; ?></b>
+                            <a href="Evaluacion_Paciente.php?id=<?php echo $paciente['Id'] ?>&token=<?php echo hash_hmac('sha1', $paciente['Id'], KEY_TOKEN) ?>" class="no-underline">
+                                <div class="card border-left-rose shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-purple text-uppercase mb-1">
+                                                    <b><?php echo $paciente['Nombre_paciente']; ?></b>
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    <?php echo"Diagnostico: ", $paciente['Diagnostico']; ?>
+                                                </div>
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <?php echo"Diagnostico: ", $paciente['Diagnostico']; ?>
+                                            <div class="col-auto">
+                                                <img src="Img/icons/familia.png" class="small-icon">
                                             </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <img src="Img/icons/familia.png" class="small-icon">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     <?php endforeach; ?>
                 </div>
