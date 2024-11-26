@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-11-2024 a las 00:30:55
+-- Tiempo de generación: 26-11-2024 a las 02:54:48
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -56,6 +56,21 @@ INSERT INTO `paciente` (`Id`, `Nombre_paciente`, `Edad_paciente`, `Sexo_paciente
 (5, 'Georgina Gonzales Socola', 12, 'Femenino', '2009-06-12', 'Problemas en el hogar, depresión y ansiedad.', 'Catalina Socola', 36, 3687548, 'cata12@gmail.com', 906778542, 'Madre', 1, 'Gabriela Trelles Rivas'),
 (6, 'Angel Zeas Iglesias', 10, 'Masculino', '2010-11-02', 'Problemas en el habla.', 'Yomar Dairon', 28, 7548521, 'yomar@gmail.com', 978558412, 'Tutor legal', 1, 'Gabriela Trelles Rivas'),
 (7, 'Sebastian Ruiz Mejias', 15, 'Masculino', '2008-04-12', 'Discute con los compañeros del colegio y problemas de ira.', 'Julieta Ruiz', 51, 368574, 'julieta@gmail.com', 906774585, 'Madre', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `paciente_historia`
+--
+
+CREATE TABLE `paciente_historia` (
+  `Id` int(11) NOT NULL,
+  `IdPaciente` int(11) NOT NULL,
+  `titulo` varchar(45) NOT NULL,
+  `comentario` varchar(45) DEFAULT NULL,
+  `Fecha_registro` datetime NOT NULL DEFAULT current_timestamp(),
+  `idPsicologo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -121,6 +136,12 @@ ALTER TABLE `paciente`
   ADD KEY `Id_Psicologo` (`Id_Psicologo`);
 
 --
+-- Indices de la tabla `paciente_historia`
+--
+ALTER TABLE `paciente_historia`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indices de la tabla `psicologos`
 --
 ALTER TABLE `psicologos`
@@ -142,6 +163,12 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `paciente`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `paciente_historia`
+--
+ALTER TABLE `paciente_historia`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `psicologos`
